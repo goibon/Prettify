@@ -1,0 +1,21 @@
+{
+  "name": "prettify",
+  "version": "1.0.0",
+  "description": "Prettify your browsing experience!",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goibon/Prettify.git"
+  },
+  "author": "Kasper Lind Sørensen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/goibon/Prettify/issues"
+  },
+  "homepage": "https://github.com/goibon/Prettify#readme",
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
+}
