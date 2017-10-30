@@ -38,6 +38,14 @@ const propertyFunctions = [
     var borderStyle = getRandomItemFromArray(borderStyles)
     var borderColor = getRandomRgbString()
     return `border: ${borderStyle} ${borderWidth}px ${borderColor};`
+  },
+
+  /**
+   * Creates a string containing a CSS 'transform' property with a random value.
+   * @return {String} A random CSS 'transform' property
+   */
+  function getRandomTransform () {
+    return `transform: ${getRandomRotation()};`
   }
 ]
 
@@ -76,6 +84,31 @@ function getRandomCssProperty () {
  */
 function getRandomItemFromArray (array) {
   return array[Math.floor(Math.random() * array.length)]
+}
+
+/**
+ * Creates a string containing a random CSS rotate statement, e.g. 'rotateX(180deg)'.
+ * @return {String} A random CSS rotate statement without property or semicolon
+ */
+function getRandomRotation () {
+  switch (Math.floor(Math.random() * 3)) {
+    case 0:
+      return getRandomXRotation()
+    default:
+      return getRandomXRotation()
+  }
+}
+
+/**
+ * Creates a string containing a random CSS rotateX statement, e.g. 'rotateX(180deg)'.
+ * @return {String} A random CSS rotateX statement without property or semicolon
+ */
+function getRandomXRotation () {
+  let rotationInDegrees = 0
+  if (Math.floor(Math.random() * 2)) {
+    rotationInDegrees = 180
+  }
+  return `rotateX(${rotationInDegrees}deg)`
 }
 
 /**
