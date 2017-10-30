@@ -97,3 +97,23 @@ function generateCssForClass (className) { // eslint-disable-line no-unused-vars
   result += getRandomCssProperty()
   return result + '}'
 }
+
+/**
+ * Creates a string containing CSS for a given id, e.g. '#myId{color: #c9f2d0;}'.
+ * @param  {String} id Id to generate CSS for
+ * @return {String}    A string containing CSS for a given id
+ */
+function generateCssForId (id) { // eslint-disable-line no-unused-vars
+  if (!id) {
+    console.error('id not provided')
+    return
+  }
+  if (typeof id !== 'string') {
+    console.error('id must be a string')
+    return
+  }
+
+  var result = `#${id} {`
+  result += getRandomCssProperty()
+  return result + '}'
+}
