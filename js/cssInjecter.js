@@ -1,13 +1,16 @@
 /**
- * Scans the DOM and finds all CSS classes in use.
- * @return {Array} An array containing the CSS classes found in the DOM
+ * Scans the DOM and finds all id attributes and CSS classes in use.
+ * @return {Array} An array containing the ids and CSS classes found in the DOM
  */
-function getCssClassesOfDocument () {
+function getIdsAndCssClassesOfDocument () {
   var iterator = document.createNodeIterator(document.body, window.NodeFilter.SHOW_ELEMENT)
+  var ids = []
   var classes = []
   var node = iterator.nextNode()
   while (node) {
-    if (node.classList && node.classList.length) {
+    if (node.id) {
+      ids.push(node.id)
+    } else if (node.classList && node.classList.length) {
       for (var i = 0; i < node.classList.length; i++) {
         if (node.classList[i]) {
           classes.push(node.classList[i])
@@ -16,16 +19,22 @@ function getCssClassesOfDocument () {
     }
     node = iterator.nextNode()
   }
-  return classes
+  return {
+    ids: ids,
+    classes: classes
+  }
 }
 
 // Retrieve the CSS classes from the DOM
-var cssClasses = getCssClassesOfDocument()
+var idsAndCssClasses = getIdsAndCssClassesOfDocument()
 
 // Create random styling
 var styleString = '<style id="prettify-style">'
-for (var i = 0; i < cssClasses.length; i++) {
-  styleString += window.generateCssForClass(cssClasses[i])
+for (var id of idsAndCssClasses.ids) {
+  styleString += window.generateCssForId(id)
+}
+for (var cssClass of idsAndCssClasses.classes) {
+  styleString += window.generateCssForClass(cssClass)
 }
 styleString += '</style>'
 
