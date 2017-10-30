@@ -94,6 +94,8 @@ function getRandomRotation () {
   switch (Math.floor(Math.random() * 3)) {
     case 0:
       return getRandomXRotation()
+    case 1:
+      return getRandomYRotation()
     default:
       return getRandomXRotation()
   }
@@ -109,6 +111,18 @@ function getRandomXRotation () {
     rotationInDegrees = 180
   }
   return `rotateX(${rotationInDegrees}deg)`
+}
+
+/**
+ * Creates a string containing a random CSS rotateY statement, e.g. 'rotateY(180deg)'.
+ * @return {String} A random CSS rotateY statement without property or semicolon
+ */
+function getRandomYRotation () {
+  let rotationInDegrees = 0
+  if (Math.floor(Math.random() * 2)) {
+    rotationInDegrees = 180
+  }
+  return `rotateY(${rotationInDegrees}deg)`
 }
 
 /**
